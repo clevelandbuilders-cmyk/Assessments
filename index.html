@@ -1,1 +1,168 @@
-<html><body></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobCam</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-left">
+        <button class="menu-btn" id="menuBtn">&#9776;</button>
+        <h1 class="logo">JobCam</h1>
+      </div>
+      <div class="header-right">
+        <button class="notif-btn" id="notifBtn">
+          <span class="notif-icon">&#128276;</span>
+          <span class="notif-badge" id="notifBadge" hidden>0</span>
+        </button>
+        <button class="btn btn-primary" id="addJobBtn">+ New Job</button>
+      </div>
+    </header>
+
+    <div class="notif-panel" id="notifPanel" hidden>
+      <div class="notif-panel-header">
+        <span>Notifications</span>
+        <button id="clearNotifs">Clear all</button>
+      </div>
+      <ul id="notifList" class="notif-list"></ul>
+      <p class="notif-empty" id="notifEmpty">No notifications</p>
+    </div>
+
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-search">
+          <input type="text" id="jobSearch" placeholder="Search jobs..." class="search-input">
+        </div>
+        <ul class="job-list" id="jobList"></ul>
+      </aside>
+
+      <main class="main" id="mainContent">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">&#128247;</div>
+          <h2>Select a job or create a new one</h2>
+          <p>Manage job photos, annotate images, and tag your team.</p>
+        </div>
+        <div class="job-view" id="jobView" hidden>
+          <div class="job-header">
+            <div>
+              <h2 id="jobTitle"></h2>
+              <p id="jobAddress" class="job-address"></p>
+              <p id="jobDate" class="job-meta"></p>
+            </div>
+            <div class="job-actions">
+              <button class="btn btn-secondary" id="editJobBtn">Edit Job</button>
+              <button class="btn btn-danger" id="deleteJobBtn">Delete Job</button>
+            </div>
+          </div>
+          <div class="photo-toolbar">
+            <label class="btn btn-primary upload-label">
+              <span>+ Add Photos</span>
+              <input type="file" id="photoInput" multiple accept="image/*" hidden>
+            </label>
+            <label class="btn btn-secondary upload-label">
+              <span>&#128247; Camera</span>
+              <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
+            </label>
+          </div>
+          <div class="photo-grid" id="photoGrid"></div>
+          <div class="drop-zone" id="dropZone"><p>Drop photos here</p></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Job Modal -->
+  <div class="modal-overlay" id="jobModal" hidden>
+    <div class="modal">
+      <h3 id="jobModalTitle">New Job</h3>
+      <div class="form-group">
+        <label>Job Name *</label>
+        <input type="text" id="jobName" class="form-input" placeholder="e.g. Kitchen Remodel">
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" id="jobAddressInput" class="form-input" placeholder="123 Main St, City, State">
+      </div>
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea id="jobNotes" class="form-input" rows="3" placeholder="Additional details..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancelJobBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveJobBtn">Save Job</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo Annotator Modal -->
+  <div class="modal-overlay fullscreen" id="photoModal" hidden>
+    <div class="annotator">
+      <div class="annotator-header">
+        <div class="annotator-tools">
+          <button class="tool-btn active" data-tool="select" title="Select">&#9654;</button>
+          <button class="tool-btn" data-tool="text" title="Add Text">T</button>
+          <button class="tool-btn" data-tool="arrow" title="Draw Arrow">&#10132;</button>
+          <button class="tool-btn" data-tool="circle" title="Draw Circle">&#9711;</button>
+          <div class="tool-separator"></div>
+          <input type="color" id="toolColor" value="#ff3b30" title="Color" class="color-picker">
+          <select id="toolSize" class="size-select" title="Stroke size">
+            <option value="2">Thin</option>
+            <option value="4" selected>Medium</option>
+            <option value="7">Thick</option>
+          </select>
+          <div class="tool-separator"></div>
+          <button class="tool-btn" id="undoBtn" title="Undo">&#8617;</button>
+          <button class="tool-btn" id="clearBtn" title="Clear all">&#128465;</button>
+        </div>
+        <div class="annotator-actions">
+          <button class="btn btn-secondary" id="tagBtn">&#128100; Tag Someone</button>
+          <button class="btn btn-primary" id="saveAnnotationBtn">Save</button>
+          <button class="btn btn-ghost" id="closeAnnotatorBtn">&#10005;</button>
+        </div>
+      </div>
+      <div class="canvas-container" id="canvasContainer">
+        <canvas id="baseCanvas"></canvas>
+        <canvas id="annotationCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tag Modal -->
+  <div class="modal-overlay" id="tagModal" hidden>
+    <div class="modal">
+      <h3>Tag a Team Member</h3>
+      <p class="tag-subtitle">They will be notified about this photo.</p>
+      <div class="form-group">
+        <label>Team Member</label>
+        <select id="tagMemberSelect" class="form-input">
+          <option value="">-- Select a member --</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (optional)</label>
+        <input type="text" id="tagMessage" class="form-input" placeholder="e.g. Please review this area">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancelTagBtn">Cancel</button>
+        <button class="btn btn-primary" id="sendTagBtn">Tag &amp; Notify</button>
+      </div>
+      <hr class="divider">
+      <div class="team-manager">
+        <h4>Manage Team</h4>
+        <div class="team-add-row">
+          <input type="text" id="newMemberName" class="form-input" placeholder="Member name">
+          <button class="btn btn-secondary" id="addMemberBtn">Add</button>
+        </div>
+        <ul id="teamList" class="team-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/annotate.js"></script>
+</body>
+</html>
