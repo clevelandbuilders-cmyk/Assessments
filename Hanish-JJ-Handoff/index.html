@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Meat &amp; Potatoes Carpentry — Hanish Referral for J&amp;J Contractors</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>:root{--black:#111009;--dark:#1C1A12;--gold:#B8922A;--gold-lt:#D4AC48;--gold-dim:#6B5318;--cream:#F4EFE0;--warm:#FAF7F0;--text:#2A2519;--muted:#7A7260;--border:rgba(184,146,42,0.2);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);font-family:"DM Sans",sans-serif;color:var(--cream);min-height:100vh;}
+#landing{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px 24px;text-align:center;position:relative;background:radial-gradient(ellipse at 25% 40%,rgba(184,146,42,0.10) 0%,transparent 55%),radial-gradient(ellipse at 75% 70%,rgba(184,146,42,0.06) 0%,transparent 50%),var(--black);}
+.gold-line-top{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.brand-name{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;}
+.landing-greeting{font-family:"Playfair Display",serif;font-size:clamp(26px,6vw,42px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:16px;max-width:560px;}
+.landing-sub{font-size:14px;color:rgba(244,239,224,0.45);line-height:1.75;max-width:440px;margin:0 auto 52px;}
+.gold-divider{width:48px;height:1px;background:var(--gold);margin:0 auto 52px;opacity:0.5;}
+.nav-links{display:flex;flex-direction:column;gap:2px;width:100%;max-width:380px;}
+.nav-link{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:rgba(255,255,255,0.03);border:1px solid var(--border);cursor:pointer;transition:background 0.2s,border-color 0.2s;text-decoration:none;color:var(--cream);}
+.nav-link:hover{background:rgba(184,146,42,0.08);border-color:rgba(184,146,42,0.5);}
+.nav-link-left{display:flex;align-items:center;gap:16px;}
+.nav-num{font-family:"Playfair Display",serif;font-size:11px;color:var(--gold-dim);width:20px;flex-shrink:0;}
+.nav-label-wrap{text-align:left;}
+.nav-cat{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.nav-title{font-size:14px;font-weight:500;color:var(--cream);}
+.nav-arrow{color:var(--gold-dim);font-size:14px;transition:transform 0.2s,color 0.2s;}
+.nav-link:hover .nav-arrow{transform:translateX(4px);color:var(--gold);}
+.landing-footer{position:absolute;bottom:24px;font-size:11px;color:rgba(244,239,224,0.2);letter-spacing:0.08em;}
+.detail-page{display:none;min-height:100vh;background:var(--warm);color:var(--text);}
+.detail-page.active{display:block;}
+.detail-header{background:var(--black);padding:20px 28px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+.back-btn{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);cursor:pointer;padding:8px 0;border:none;background:none;font-family:"DM Sans",sans-serif;transition:opacity 0.2s;}
+.back-btn:hover{opacity:0.7;}
+.detail-header-title{font-family:"Playfair Display",serif;font-size:15px;color:var(--cream);flex:1;}
+.detail-body{padding:36px 28px 64px;max-width:680px;margin:0 auto;}
+.detail-cat{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.detail-title{font-family:"Playfair Display",serif;font-size:clamp(22px,5vw,30px);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(184,146,42,0.2);}
+.detail-desc{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:28px;}
+.scope-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
+.scope-item{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;background:white;border-left:2px solid var(--gold);font-size:14px;color:var(--text);line-height:1.45;}
+.scope-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:6px;}
+.note-box{padding:16px 20px;background:rgba(184,146,42,0.07);border-left:3px solid var(--gold);font-size:13px;color:var(--muted);font-style:italic;line-height:1.65;margin-bottom:28px;}
+.sub-card{padding:18px 20px;background:white;border:1px solid rgba(184,146,42,0.18);margin-bottom:8px;}
+.sub-card-cat{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.sub-card-title{font-weight:500;font-size:15px;margin-bottom:5px;}
+.sub-card-desc{font-size:13px;color:var(--muted);line-height:1.55;}
+.spec-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid rgba(184,146,42,0.08);gap:12px;}
+.spec-row:last-child{border-bottom:none;}
+.spec-key{color:var(--muted);flex-shrink:0;}
+.spec-val{color:var(--text);font-weight:500;text-align:right;}
+.section-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:28px 0 10px;}
+.next-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(184,146,42,0.08);font-size:14px;color:var(--text);line-height:1.6;}
+.next-item:last-child{border-bottom:none;}
+.next-num{font-family:"Playfair Display",serif;font-size:18px;color:rgba(184,146,42,0.35);width:24px;flex-shrink:0;line-height:1.4;}
+.photo-section{margin-top:24px;}
+.photo-section-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.photo-collage{display:grid;gap:4px;margin-bottom:8px;}
+.photo-collage.cols-1{grid-template-columns:1fr;}
+.photo-collage.cols-2{grid-template-columns:1fr 1fr;}
+.photo-collage.cols-3{grid-template-columns:1fr 1fr 1fr;}
+.photo-item{position:relative;overflow:hidden;aspect-ratio:4/3;background:#1a1a1a;}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:rgba(244,239,224,0.9);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 10px 6px;font-family:"DM Sans",sans-serif;}
+.siding-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px;}
+.siding-table th{background:rgba(184,146,42,0.1);color:var(--gold);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;text-align:left;padding:10px 12px;border-bottom:1px solid rgba(184,146,42,0.2);}
+.siding-table td{padding:9px 12px;border-bottom:1px solid rgba(184,146,42,0.08);color:var(--text);background:white;}
+.siding-table tr:last-child td{background:rgba(184,146,42,0.06);font-weight:500;color:var(--gold-dim);border-top:1px solid rgba(184,146,42,0.2);}
+/* additions for the contractor handoff */
+.landing-tag{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,239,224,0.4);margin-bottom:14px;}
+.pdf-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:380px;margin-top:14px;padding:16px 24px;background:var(--gold);color:var(--black);font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.pdf-btn:hover{background:var(--gold-lt);}
+.pdf-btn.inline{max-width:none;margin:0 0 10px;}
+.text-link{color:var(--gold-dim);font-weight:500;text-decoration:underline;text-underline-offset:3px;}
+.spec-val a{color:var(--gold-dim);text-decoration:underline;text-underline-offset:3px;}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:20px;}
+.table-wrap .siding-table{margin-bottom:0;}
+.siding-table.plain tr:last-child td{background:white;font-weight:400;color:var(--text);border-top:none;}
+.siding-table td.num,.siding-table th.num{text-align:right;white-space:nowrap;}
+.shots{display:grid;gap:14px;margin-bottom:8px;}
+.shots.two{grid-template-columns:1fr 1fr;}
+.shot{margin:0;}
+.shot a{display:block;background:#1a1a1a;}
+.shot img{display:block;width:100%;height:auto;}
+.shot figcaption{font-size:12px;line-height:1.5;color:var(--muted);padding:8px 2px 0;}
+.shot figcaption b{display:block;font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2px;}
+.sign-off{margin-top:36px;padding-top:18px;border-top:1px solid rgba(184,146,42,0.2);font-size:13px;color:var(--muted);line-height:1.7;}
+.sign-off a{color:var(--gold-dim);}
+@media (max-width:520px){.siding-table{font-size:12px;}.siding-table th,.siding-table td{padding:8px 6px;}.siding-table th{letter-spacing:0.08em;}.siding-table.plain td.num{white-space:normal;}.shots.two{grid-template-columns:1fr;}.detail-body{padding:28px 16px 56px;}.detail-header{padding:16px;}.spec-row{flex-direction:column;gap:2px;}.spec-val{text-align:left;}}
+</style></head><body>
+<div id="landing">
+  <div class="gold-line-top"></div>
+  <img src="logo.png" alt="M&amp;P Carpentry Logo" style="width:90px;height:90px;object-fit:contain;margin-bottom:24px;">
+  <div class="brand-name">Meat &amp; Potatoes Carpentry</div>
+  <div class="landing-tag">Contractor referral · Not a customer document</div>
+  <h1 class="landing-greeting">Jason, here's the Hanish house.</h1>
+  <p class="landing-sub">Site notes, photos and Hover measurements for 2802 N. Burton Ct., Waukesha. Walked Saturday, October 10, 2026. Tap any item below for the details.</p>
+  <div class="gold-divider"></div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="showPage('overview')"><div class="nav-link-left"><div class="nav-num">01</div><div class="nav-label-wrap"><div class="nav-cat">Overview</div><div class="nav-title">What this job really is</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('customer')"><div class="nav-link-left"><div class="nav-num">02</div><div class="nav-label-wrap"><div class="nav-cat">Homeowner</div><div class="nav-title">Contact and property</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('exterior')"><div class="nav-link-left"><div class="nav-num">03</div><div class="nav-label-wrap"><div class="nav-cat">Exterior</div><div class="nav-title">Windows, flashing, siding, patio door</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('interior')"><div class="nav-link-left"><div class="nav-num">04</div><div class="nav-label-wrap"><div class="nav-cat">Interior</div><div class="nav-title">Ceilings and two bathrooms</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('hover')"><div class="nav-link-left"><div class="nav-num">05</div><div class="nav-label-wrap"><div class="nav-cat">Measurements</div><div class="nav-title">Hover takeoffs and window schedule</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('sell')"><div class="nav-link-left"><div class="nav-num">06</div><div class="nav-label-wrap"><div class="nav-cat">Owner</div><div class="nav-title">Repair it or sell it as-is</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('open')"><div class="nav-link-left"><div class="nav-num">07</div><div class="nav-label-wrap"><div class="nav-cat">Open Items</div><div class="nav-title">What's still unknown</div></div></div><div class="nav-arrow">→</div></a>
+  </div>
+  <a class="pdf-btn" href="Hover-Complete-Measurements-2802-N-Burton-Ct.pdf" target="_blank" rel="noopener">Hover measurements PDF · 31 pages</a>
+  <div class="landing-footer" style="position:static;margin-top:40px;">Prepared for Jason Cybrowski &nbsp;·&nbsp; J&amp;J Contractors &nbsp;·&nbsp; October 2026</div>
+</div>
+
+<!-- 01 OVERVIEW -->
+<div class="detail-page" id="page-overview">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Overview</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Overview</div>
+    <div class="detail-title">What This Job Really Is</div>
+    <p class="detail-desc">Jason, I walked this house on Saturday, October 10. Chris Hanish called me about replacement windows, but the house is taking water in several places and the real job is the whole exterior plus interior repairs. I'm sending it your way as a referral.</p>
+    <div class="section-label">What I found and talked through with him</div>
+    <div class="scope-list">
+      <div class="scope-item"><div class="scope-dot"></div>Every window in the house needs replacing. Two are really bad, and second-floor windows are leaking into the first-floor ceilings.</div>
+      <div class="scope-item"><div class="scope-dot"></div>The roof was redone about 10 years ago. I don't think it was flashed properly where the siding meets the roof.</div>
+      <div class="scope-item"><div class="scope-dot"></div>The cedar siding is at the point of tear-off and replace.</div>
+      <div class="scope-item"><div class="scope-dot"></div>The back patio door has a soft spot from water getting in.</div>
+      <div class="scope-item"><div class="scope-dot"></div>Inside, there is ceiling drywall to cut out and two bathrooms with their own leak damage, one with rotting subfloor.</div>
+    </div>
+    <div class="note-box">There has not been much maintenance done on this house and it is starting to show. He has also talked about cutting his losses and selling it as-is.</div>
+    <div class="section-label">Size of the house, from Hover</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Windows</span><span class="spec-val">34 units</span></div>
+      <div class="spec-row"><span class="spec-key">Doors</span><span class="spec-val">2 entry, 1 sliding patio, 1 garage</span></div>
+      <div class="spec-row"><span class="spec-key">Siding and trim</span><span class="spec-val">2,365 sq ft before waste</span></div>
+      <div class="spec-row"><span class="spec-key">Roof</span><span class="spec-val">2,569 sq ft, 6/12 pitch</span></div>
+      <div class="spec-row"><span class="spec-key">Footprint</span><span class="spec-val">1,909 sq ft, two-story</span></div>
+    </div>
+    <figure class="shot" style="margin-top:20px;"><a href="photos/01-front-elevation.jpg" target="_blank" rel="noopener"><img src="photos/01-front-elevation.jpg" alt="Front elevation of 2802 N. Burton Ct." loading="lazy"></a><figcaption><b>Front elevation</b>The lower roofs run into the second-floor walls on both sides.</figcaption></figure>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<!-- 02 CUSTOMER -->
+<div class="detail-page" id="page-customer">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Homeowner</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Homeowner</div>
+    <div class="detail-title">Contact and Property</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Homeowner</span><span class="spec-val">Chris Hanish</span></div>
+      <div class="spec-row"><span class="spec-key">Address</span><span class="spec-val">2802 N. Burton Ct., Waukesha, WI 53188</span></div>
+      <div class="spec-row"><span class="spec-key">Look for</span><span class="spec-val">White house, red front door</span></div>
+      <div class="spec-row"><span class="spec-key">Phone</span><span class="spec-val"><a href="tel:+14144066171">(414) 406-6171</a> · he texts</span></div>
+      <div class="spec-row"><span class="spec-key">Email</span><span class="spec-val"><a href="mailto:topherhan@aol.com">topherhan@aol.com</a></span></div>
+      <div class="spec-row"><span class="spec-key">Original request</span><span class="spec-val">Replacement windows, September 17, 2026</span></div>
+    </div>
+    <div class="section-label">The house</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Two-story with lower roofs meeting the second-floor walls</span></div>
+      <div class="spec-row"><span class="spec-key">Siding</span><span class="spec-val">Cedar lap, painted</span></div>
+      <div class="spec-row"><span class="spec-key">Roof</span><span class="spec-val">Redone about 10 years ago</span></div>
+    </div>
+    <div class="note-box">I have not quoted or contracted anything on this house. All I have done is the site visit.</div>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<!-- 03 EXTERIOR -->
+<div class="detail-page" id="page-exterior">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Exterior Findings</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Exterior</div>
+    <div class="detail-title">Windows, Flashing, Siding, Patio Door</div>
+    <p class="detail-desc">Water is getting in at the windows, at the roof-to-wall line, and at the back patio door.</p>
+
+    <div class="section-label">Windows · whole house</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Condition</span><span class="spec-val">All need replacing. Two are really bad.</span></div>
+      <div class="spec-row"><span class="spec-key">Problem</span><span class="spec-val">Second-floor windows are causing leaks inside the house</span></div>
+      <div class="spec-row"><span class="spec-key">Existing</span><span class="spec-val">Wood crank-out units</span></div>
+      <div class="spec-row"><span class="spec-key">Interior casing</span><span class="spec-val">About 2 1/4" wide</span></div>
+      <div class="spec-row"><span class="spec-key">Discussed</span><span class="spec-val">Replace all, starting with the leaking second-floor units</span></div>
+    </div>
+
+    <div class="section-label">Natalie's room window · 2nd floor</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">My tape measurement</span><span class="spec-val">23 1/2" x 47 1/2"</span></div>
+      <div class="spec-row"><span class="spec-key">Condition</span><span class="spec-val">Significant sill rot on the exterior</span></div>
+      <div class="spec-row"><span class="spec-key">Damage below</span><span class="spec-val">First-floor ceiling directly under it</span></div>
+      <div class="spec-row"><span class="spec-key">Discussed</span><span class="spec-val">First opening to address</span></div>
+    </div>
+
+    <div class="section-label">Roof-to-wall flashing</div>
+    <div class="sub-card">
+      <div class="sub-card-desc" style="color:var(--text);font-size:14px;">Roofing was done about 10 years ago. I don't think it was flashed properly where the siding meets the roof. There is no gap between the cedar siding and the shingles. Usually 1" to 1 1/2" is required. You can see it in the roof photos below.</div>
+    </div>
+
+    <div class="section-label">Cedar siding</div>
+    <div class="sub-card">
+      <div class="sub-card-desc" style="color:var(--text);font-size:14px;">Painted recently. They said they are not going to paint it again. The next step is to tear it off, remove it and replace it.</div>
+    </div>
+
+    <div class="section-label">Back patio door</div>
+    <div class="sub-card">
+      <div class="sub-card-desc" style="color:var(--text);font-size:14px;">Soft spot where water has been leaking in.</div>
+    </div>
+
+    <div class="section-label">Second-floor windows from the roof</div>
+    <div class="shots two">
+      <figure class="shot"><a href="photos/02-exterior-window-sill-rot.jpg" target="_blank" rel="noopener"><img src="photos/02-exterior-window-sill-rot.jpg" alt="Second-floor window from the roof showing rotted sill" loading="lazy"></a><figcaption><b>Sill rot</b>Rot at the bottom of the unit, running into the lower corners of the trim. Siding sits tight to the shingles.</figcaption></figure>
+      <figure class="shot"><a href="photos/03-exterior-window-sill-rot-angle.jpg" target="_blank" rel="noopener"><img src="photos/03-exterior-window-sill-rot-angle.jpg" alt="Same window from a second angle" loading="lazy"></a><figcaption><b>Same window, second angle</b>Rot shows in the sill and up the lower left side of the brown trim.</figcaption></figure>
+      <figure class="shot"><a href="photos/04-exterior-window-failed-paint.jpg" target="_blank" rel="noopener"><img src="photos/04-exterior-window-failed-paint.jpg" alt="Another second-floor window with failed paint at the sill" loading="lazy"></a><figcaption><b>Second window, same roofline</b>Paint has failed across the sill. Again no gap between siding and roofing.</figcaption></figure>
+    </div>
+
+    <div class="section-label">Same windows from inside</div>
+    <div class="shots two">
+      <figure class="shot"><a href="photos/05-interior-window-valance.jpg" target="_blank" rel="noopener"><img src="photos/05-interior-window-valance.jpg" alt="Interior view of a second-floor window with a valance" loading="lazy"></a><figcaption><b>Patched from inside</b>Foam and tape packed along the bottom and right edges of the glass.</figcaption></figure>
+      <figure class="shot"><a href="photos/06-interior-window-dark-blind.jpg" target="_blank" rel="noopener"><img src="photos/06-interior-window-dark-blind.jpg" alt="Interior view of a second-floor window with a dark blind" loading="lazy"></a><figcaption><b>Patched from inside</b>Same kind of patch along the bottom and right edges of the glass.</figcaption></figure>
+      <figure class="shot"><a href="photos/07-interior-window-piano-room.jpg" target="_blank" rel="noopener"><img src="photos/07-interior-window-piano-room.jpg" alt="Interior view of a second-floor window above a piano" loading="lazy"></a><figcaption><b>Another second-floor unit</b>Looks out over the lower roof.</figcaption></figure>
+      <figure class="shot"><a href="photos/08-interior-casing-width.jpg" target="_blank" rel="noopener"><img src="photos/08-interior-casing-width.jpg" alt="Tape measure across interior window casing" loading="lazy"></a><figcaption><b>Interior casing</b>About 2 1/4" wide.</figcaption></figure>
+    </div>
+    <div class="note-box" style="margin-top:20px;">Tap any photo to open it full size.</div>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<!-- 04 INTERIOR -->
+<div class="detail-page" id="page-interior">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Interior Water Damage</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Interior</div>
+    <div class="detail-title">Ceilings and Two Bathrooms</div>
+    <p class="detail-desc">There are three separate sources of interior damage: the leaking windows and two bathrooms.</p>
+
+    <div class="section-label">First-floor ceilings below the second-floor windows</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Cause</span><span class="spec-val">Leaking windows above</span></div>
+      <div class="spec-row"><span class="spec-key">Discussed</span><span class="spec-val">Cut out and remove the water-damaged ceiling drywall</span></div>
+    </div>
+
+    <div class="section-label">Bathroom 1</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Cause</span><span class="spec-val">Shower mixer valve was leaking</span></div>
+      <div class="spec-row"><span class="spec-key">Discussed</span><span class="spec-val">Drywall repair</span></div>
+      <div class="spec-row"><span class="spec-key">Subfloor</span><span class="spec-val">Some flooring may need replacing. With the drywall removed you can see the OSB, and it looks like it is rotting through.</span></div>
+    </div>
+
+    <div class="section-label">Bathroom 2</div>
+    <div class="sub-card">
+      <div class="spec-row"><span class="spec-key">Cause</span><span class="spec-val">Tub overflowed and leaked into the ceiling cavity</span></div>
+      <div class="spec-row"><span class="spec-key">Discussed</span><span class="spec-val">Drywall repair at the damaged ceiling</span></div>
+    </div>
+
+    <div class="section-label">First-floor ceilings</div>
+    <div class="shots">
+      <figure class="shot"><a href="photos/09-ceiling-plastic-sheeting.jpg" target="_blank" rel="noopener"><img src="photos/09-ceiling-plastic-sheeting.jpg" alt="First-floor ceiling covered with plastic sheeting" loading="lazy"></a><figcaption><b>Ceiling covered in plastic</b>Plastic sheeting pinned up over a damaged ceiling area.</figcaption></figure>
+      <figure class="shot"><a href="photos/10-ceiling-plastic-dining.jpg" target="_blank" rel="noopener"><img src="photos/10-ceiling-plastic-dining.jpg" alt="Dining room ceiling covered with plastic sheeting" loading="lazy"></a><figcaption><b>Dining room</b>Plastic sheeting over the ceiling at the dining room.</figcaption></figure>
+      <figure class="shot"><a href="photos/11-ceiling-kitchen-stain.jpg" target="_blank" rel="noopener"><img src="photos/11-ceiling-kitchen-stain.jpg" alt="Water stain on kitchen ceiling near the patio door" loading="lazy"></a><figcaption><b>Kitchen</b>Water stain on the kitchen ceiling, with the back patio door below.</figcaption></figure>
+    </div>
+    <div class="note-box" style="margin-top:20px;">No photos yet of the two bathrooms, the rotted OSB or the patio door soft spot.</div>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<!-- 05 HOVER -->
+<div class="detail-page" id="page-hover">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Hover Measurements</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Measurements</div>
+    <div class="detail-title">Hover Takeoffs and Window Schedule</div>
+    <p class="detail-desc">I built a 3D model of the house in Hover. The full 31-page report is attached, and the numbers you'll reach for first are pulled out below.</p>
+    <a class="pdf-btn inline" href="Hover-Complete-Measurements-2802-N-Burton-Ct.pdf" target="_blank" rel="noopener">Open the Hover PDF · 31 pages</a>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">3D model: <a class="text-link" href="https://hover.to/go/jobs/24261746/viewer" target="_blank" rel="noopener">hover.to/go/jobs/24261746/viewer</a> (may ask for a Hover login).</p>
+    <div class="note-box">Hover builds these from photos. Good for ballparking. Field verify before ordering anything.</div>
+
+    <div class="section-label">Siding</div>
+    <div class="table-wrap"><table class="siding-table plain">
+      <tr><th>Item</th><th class="num">Amount</th></tr>
+      <tr><td>Siding facades</td><td class="num">2,256 sq ft</td></tr>
+      <tr><td>Siding and trim, zero waste</td><td class="num">2,365 sq ft · 23 3/4 sq</td></tr>
+      <tr><td>Siding and trim, +10%</td><td class="num">2,601 sq ft · 26 1/4 sq</td></tr>
+      <tr><td>Siding and trim, +18%</td><td class="num">2,791 sq ft · 28 sq</td></tr>
+      <tr><td>Outside corners</td><td class="num">15 · 118' 4"</td></tr>
+      <tr><td>Inside corners</td><td class="num">5 · 41' 6"</td></tr>
+      <tr><td>Level starter</td><td class="num">243' 10"</td></tr>
+      <tr><td>Sloped trim</td><td class="num">72' 9"</td></tr>
+      <tr><td>Openings in siding</td><td class="num">38 · 417' 11" perimeter</td></tr>
+    </table></div>
+
+    <div class="section-label">Roof</div>
+    <div class="table-wrap"><table class="siding-table plain">
+      <tr><th>Item</th><th class="num">Amount</th></tr>
+      <tr><td>Roof area, 8 facets, all 6/12</td><td class="num">2,569 sq ft · 26 sq</td></tr>
+      <tr><td>Roof area, +10%</td><td class="num">2,826 sq ft · 28 1/3 sq</td></tr>
+      <tr><td>Ridges</td><td class="num">88' 10"</td></tr>
+      <tr><td>Valleys</td><td class="num">2' 6"</td></tr>
+      <tr><td>Rakes</td><td class="num">135' 8"</td></tr>
+      <tr><td>Eaves</td><td class="num">218' 6"</td></tr>
+      <tr><td>Step flashing</td><td class="num">75' 2"</td></tr>
+      <tr><td>Flashing</td><td class="num">42' 9"</td></tr>
+      <tr><td>Drip edge / perimeter</td><td class="num">354' 2"</td></tr>
+    </table></div>
+    <div class="note-box">The step flashing and flashing lengths are the roof-to-wall lines, which is where I think the flashing was done wrong.</div>
+
+    <div class="section-label">Roofline</div>
+    <div class="table-wrap"><table class="siding-table plain">
+      <tr><th>Item</th><th class="num">Amount</th></tr>
+      <tr><td>Eaves fascia</td><td class="num">218' 6"</td></tr>
+      <tr><td>Rakes fascia</td><td class="num">135' 8"</td></tr>
+      <tr><td>Level frieze board</td><td class="num">167' 11"</td></tr>
+      <tr><td>Sloped frieze board</td><td class="num">112' 7"</td></tr>
+      <tr><td>Soffit</td><td class="num">445 sq ft · 332' 6"</td></tr>
+    </table></div>
+
+    <div class="section-label">Window schedule · 34 units</div>
+    <div class="table-wrap"><table class="siding-table">
+      <tr><th>Hover ID</th><th>Floor</th><th>Side</th><th class="num">Qty</th><th class="num">Each, W x H</th><th class="num">Group, W x H</th></tr>
+      <tr><td>W-101</td><td>1st</td><td>Front</td><td class="num">1</td><td class="num">18" x 44"</td><td class="num">18" x 44"</td></tr>
+      <tr><td>W-102</td><td>1st</td><td>Front</td><td class="num">1</td><td class="num">18" x 44"</td><td class="num">18" x 44"</td></tr>
+      <tr><td>W-103, 104</td><td>1st</td><td>Front</td><td class="num">2</td><td class="num">18" x 44"</td><td class="num">42" x 44"</td></tr>
+      <tr><td>W-105 to 107</td><td>1st</td><td>Front</td><td class="num">3</td><td class="num">20" x 58"</td><td class="num">69" x 58"</td></tr>
+      <tr><td>W-108</td><td>1st</td><td>Front</td><td class="num">1</td><td class="num">24" x 38"</td><td class="num">24" x 38"</td></tr>
+      <tr><td>W-109 to 111</td><td>1st</td><td>Front</td><td class="num">3</td><td class="num">17" x 58"</td><td class="num">66" x 58"</td></tr>
+      <tr><td>W-112, 113</td><td>1st</td><td>Right</td><td class="num">2</td><td class="num">19" x 55"</td><td class="num">42" x 55"</td></tr>
+      <tr><td>W-114, 115</td><td>1st</td><td>Right</td><td class="num">2</td><td class="num">19" x 55"</td><td class="num">42" x 55"</td></tr>
+      <tr><td>W-116</td><td>1st</td><td>Back</td><td class="num">1</td><td class="num">34" x 61"</td><td class="num">34" x 61"</td></tr>
+      <tr><td>W-117, 118</td><td>1st</td><td>Back</td><td class="num">2</td><td class="num">16" x 36"</td><td class="num">36" x 36"</td></tr>
+      <tr><td>W-119, 120</td><td>1st</td><td>Right</td><td class="num">2</td><td class="num">20" x 54"</td><td class="num">44" x 54"</td></tr>
+      <tr><td>W-121, 122</td><td>1st</td><td>Back</td><td class="num">2</td><td class="num">19" x 54"</td><td class="num" rowspan="2">44" x 82"</td></tr>
+      <tr><td>W-123, arch top</td><td>1st</td><td>Back</td><td class="num">1</td><td class="num">44" x 22"</td></tr>
+      <tr><td>W-224, 225</td><td>2nd</td><td>Front</td><td class="num">2</td><td class="num">18" x 57"</td><td class="num">42" x 57"</td></tr>
+      <tr><td>W-226, 227</td><td>2nd</td><td>Front</td><td class="num">2</td><td class="num">18" x 57"</td><td class="num">42" x 57"</td></tr>
+      <tr><td>W-228</td><td>2nd</td><td>Right</td><td class="num">1</td><td class="num">26" x 50"</td><td class="num">26" x 50"</td></tr>
+      <tr><td>W-229</td><td>2nd</td><td>Right</td><td class="num">1</td><td class="num">26" x 50"</td><td class="num">26" x 50"</td></tr>
+      <tr><td>W-230, 231</td><td>2nd</td><td>Back</td><td class="num">2</td><td class="num">21" x 55"</td><td class="num">47" x 55"</td></tr>
+      <tr><td>W-232</td><td>2nd</td><td>Back</td><td class="num">1</td><td class="num">26" x 36"</td><td class="num">26" x 36"</td></tr>
+      <tr><td>W-233</td><td>2nd</td><td>Back</td><td class="num">1</td><td class="num">26" x 36"</td><td class="num">26" x 36"</td></tr>
+      <tr><td>W-234</td><td>2nd</td><td>Left</td><td class="num">1</td><td class="num">43" x 56"</td><td class="num">43" x 56"</td></tr>
+      <tr><td colspan="6">34 windows · 2,449 united inches · 253 sq ft</td></tr>
+    </table></div>
+    <div class="note-box">W-228 and W-229 are the two 26" x 50" units on the right gable over the lower roof. They look like the two windows in my roof photos, which would make one of them the Natalie's room unit I taped at 23 1/2" x 47 1/2". Confirm on site.</div>
+
+    <div class="section-label">Doors</div>
+    <div class="table-wrap"><table class="siding-table plain">
+      <tr><th>Hover ID</th><th>Door</th><th class="num">Door, W x H</th><th class="num">Whole unit, W x H</th></tr>
+      <tr><td>D-1</td><td>Front entry</td><td class="num">36" x 80"</td><td class="num">71" x 80"</td></tr>
+      <tr><td>D-2</td><td>Back entry</td><td class="num">36" x 80"</td><td class="num">35" x 80"</td></tr>
+      <tr><td>SGD-1</td><td>Sliding patio door, back</td><td class="num">72" x 80"</td><td class="num">74" x 80"</td></tr>
+      <tr><td>D-3</td><td>Garage door</td><td class="num">192" x 84"</td><td class="num">190" x 88"</td></tr>
+    </table></div>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<!-- 06 SELL -->
+<div class="detail-page" id="page-sell">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Repair or Sell</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Owner</div>
+    <div class="detail-title">Repair It or Sell It As-Is</div>
+    <p class="detail-desc">Chris has also talked about possibly cutting his losses and just selling the house as-is.</p>
+    <p class="detail-desc">I know J&amp;J isn't in the business of buying and flipping homes. But if you could get the house at a decent cost, it may be worth it for you. It's in a great neighborhood.</p>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<!-- 07 OPEN ITEMS -->
+<div class="detail-page" id="page-open">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Open Items</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Open Items</div>
+    <div class="detail-title">What's Still Unknown</div>
+    <div class="next-item"><div class="next-num">1</div><div><strong>Window sizes.</strong> I only put a tape on one opening. Everything else is from Hover and needs a field measure.</div></div>
+    <div class="next-item"><div class="next-num">2</div><div><strong>Natalie's room measurement.</strong> 23 1/2" x 47 1/2" still needs to be confirmed as frame size or rough opening.</div></div>
+    <div class="next-item"><div class="next-num">3</div><div><strong>Hidden damage.</strong> The sheathing and framing behind the siding, at the roof-to-wall line and under the patio door can't be judged until it is opened up.</div></div>
+    <div class="next-item"><div class="next-num">4</div><div><strong>Bathrooms.</strong> No photos or measurements yet of either bathroom or the rotted OSB.</div></div>
+    <div class="next-item"><div class="next-num">5</div><div><strong>Permit.</strong> Not checked with the City of Waukesha.</div></div>
+    <div class="sign-off">Dan Cleveland · Meat &amp; Potatoes Carpentry<br><a href="tel:+14144045470">(414) 404-5470</a> · <a href="mailto:meatandpotatoescarpentry@gmail.com">meatandpotatoescarpentry@gmail.com</a></div>
+  </div>
+</div>
+
+<script>
+function showPage(id){document.getElementById('landing').style.display='none';document.querySelectorAll('.detail-page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');window.scrollTo(0,0);}
+function showLanding(){document.querySelectorAll('.detail-page').forEach(p=>p.classList.remove('active'));document.getElementById('landing').style.display='flex';window.scrollTo(0,0);}
+</script></body></html>
