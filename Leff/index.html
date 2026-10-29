@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meat & Potatoes Carpentry — Leff Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:  #111009;
+    --dark:   #1C1A12;
+    --gold:   #B8922A;
+    --gold-lt:#D4AC48;
+    --gold-dim:#6B5318;
+    --cream:  #F4EFE0;
+    --warm:   #FAF7F0;
+    --text:   #2A2519;
+    --muted:  #7A7260;
+    --border: rgba(184,146,42,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); font-family: "DM Sans", sans-serif; color: var(--cream); min-height: 100vh; }
+
+  #landing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 24px;
+    text-align: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 25% 40%, rgba(184,146,42,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(184,146,42,0.06) 0%, transparent 50%),
+      var(--black);
+  }
+  .gold-line-top { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .brand-name { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 36px; }
+  .landing-greeting { font-family: "Playfair Display", serif; font-size: clamp(26px, 6vw, 42px); font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 16px; max-width: 560px; }
+  .landing-sub { font-size: 14px; color: rgba(244,239,224,0.45); line-height: 1.75; max-width: 440px; margin: 0 auto 52px; }
+  .gold-divider { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 52px; opacity: 0.5; }
+  .nav-links { display: flex; flex-direction: column; gap: 2px; width: 100%; max-width: 380px; }
+  .nav-link { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); cursor: pointer; transition: background 0.2s, border-color 0.2s; text-decoration: none; color: var(--cream); }
+  .nav-link:hover { background: rgba(184,146,42,0.08); border-color: rgba(184,146,42,0.5); }
+  .nav-link-left { display: flex; align-items: center; gap: 16px; }
+  .nav-num { font-family: "Playfair Display", serif; font-size: 11px; color: var(--gold-dim); width: 20px; flex-shrink: 0; }
+  .nav-label-wrap { text-align: left; }
+  .nav-cat { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+  .nav-title { font-size: 14px; font-weight: 500; color: var(--cream); }
+  .nav-arrow { color: var(--gold-dim); font-size: 14px; transition: transform 0.2s, color 0.2s; }
+  .nav-link:hover .nav-arrow { transform: translateX(4px); color: var(--gold); }
+  .landing-footer { position: absolute; bottom: 24px; font-size: 11px; color: rgba(244,239,224,0.2); letter-spacing: 0.08em; }
+  .detail-page { display: none; min-height: 100vh; background: var(--warm); color: var(--text); }
+  .detail-page.active { display: block; }
+  .detail-header { background: var(--black); padding: 20px 28px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .back-btn { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); cursor: pointer; padding: 8px 0; border: none; background: none; font-family: "DM Sans", sans-serif; transition: opacity 0.2s; }
+  .back-btn:hover { opacity: 0.7; }
+  .detail-header-title { font-family: "Playfair Display", serif; font-size: 15px; color: var(--cream); flex: 1; }
+  .detail-body { padding: 36px 28px 64px; max-width: 680px; margin: 0 auto; }
+  .detail-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .detail-title { font-family: "Playfair Display", serif; font-size: clamp(22px, 5vw, 30px); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(184,146,42,0.2); }
+  .detail-desc { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 28px; }
+  .scope-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+  .scope-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: white; border-left: 2px solid var(--gold); font-size: 14px; color: var(--text); line-height: 1.45; }
+  .scope-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .note-box { padding: 16px 20px; background: rgba(184,146,42,0.07); border-left: 3px solid var(--gold); font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.65; margin-bottom: 28px; }
+  .sub-card { padding: 18px 20px; background: white; border: 1px solid rgba(184,146,42,0.18); margin-bottom: 8px; }
+  .sub-card-cat { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+  .sub-card-title { font-weight: 500; font-size: 15px; margin-bottom: 5px; }
+  .sub-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .spec-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(184,146,42,0.08); gap: 12px; }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-key { color: var(--muted); flex-shrink: 0; }
+  .spec-val { color: var(--text); font-weight: 500; text-align: right; }
+  .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 28px 0 10px; }
+  .siding-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+  .siding-table th { background: rgba(184,146,42,0.1); color: var(--gold); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(184,146,42,0.2); }
+  .siding-table td { padding: 9px 12px; border-bottom: 1px solid rgba(184,146,42,0.08); color: var(--text); background: white; }
+  .siding-table tr:last-child td { background: rgba(184,146,42,0.06); font-weight: 500; color: var(--gold-dim); border-top: 1px solid rgba(184,146,42,0.2); }
+  .referral-item { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(184,146,42,0.12); }
+  .referral-item:last-child { border-bottom: none; }
+  .ref-trade { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); width: 56px; flex-shrink: 0; }
+  .ref-name { font-size: 15px; font-weight: 500; flex: 1; }
+  .ref-co { font-size: 13px; color: var(--muted); }
+  .ref-phone { font-size: 14px; font-weight: 500; color: var(--gold); text-decoration: none; letter-spacing: 0.02em; }
+  .ref-phone:hover { text-decoration: underline; }
+  .next-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(184,146,42,0.08); font-size: 14px; color: var(--text); line-height: 1.6; }
+  .next-item:last-child { border-bottom: none; }
+  .next-num { font-family: "Playfair Display", serif; font-size: 18px; color: rgba(184,146,42,0.35); width: 24px; flex-shrink: 0; line-height: 1.4; }
+  .photo-section { margin-top: 24px; }
+  .photo-section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .photo-collage { display: grid; gap: 4px; margin-bottom: 8px; }
+  .photo-collage.cols-1 { grid-template-columns: 1fr; }
+  .photo-collage.cols-2 { grid-template-columns: 1fr 1fr; }
+  .photo-collage.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .photo-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: #1a1a1a; }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.75)); color: rgba(244,239,224,0.9); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 10px 6px; font-family: "DM Sans", sans-serif; }
+</style>
+</head>
+<body>
+<div id="landing">
+  <div class="gold-line-top"></div>
+  <img src="https://clevelandbuilders-cmyk.github.io/Assessments/logo.png" alt="M&amp;P Carpentry Logo" style="width:90px;height:90px;object-fit:contain;margin-bottom:24px;">
+  <div class="brand-name">Meat &amp; Potatoes Carpentry</div>
+  <h1 class="landing-greeting">Thank you for having us out, Larry.</h1>
+  <p class="landing-sub">We've put together a summary of everything we discussed during our visit. Tap any item below to see details and what's involved in the work.</p>
+  <div class="gold-divider"></div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="showPage('garage-trim')"><div class="nav-link-left"><div class="nav-num">01</div><div class="nav-label-wrap"><div class="nav-cat">Exterior</div><div class="nav-title">Garage Door Trim — 2 openings</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('weatherstrip')"><div class="nav-link-left"><div class="nav-num">02</div><div class="nav-label-wrap"><div class="nav-cat">Exterior</div><div class="nav-title">Garage Door Weatherstrip</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('pantry')"><div class="nav-link-left"><div class="nav-num">03</div><div class="nav-label-wrap"><div class="nav-cat">Interior</div><div class="nav-title">Kitchen Pantry Closet</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('next-steps')"><div class="nav-link-left"><div class="nav-num">04</div><div class="nav-label-wrap"><div class="nav-cat">Next Steps</div><div class="nav-title">What Happens Next</div></div></div><div class="nav-arrow">→</div></a>
+  </div>
+  <div class="landing-footer">meatandpotatoescarpentry.com &nbsp;·&nbsp; Larry Leff &nbsp;·&nbsp; October 2026</div>
+</div>
+
+<div class="detail-page" id="page-garage-trim"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Garage Door Trim</div></div><div class="detail-body">
+  <div class="detail-cat">Exterior · 6228 60th Avenue</div>
+  <div class="detail-title">Garage Door Trim Replacement</div>
+  <p class="detail-desc">The existing wood trim around both overhead garage door openings will be removed and replaced with AZEK PVC trim and PVC brickmold, painted Eldridge Gray. AZEK won't rot, split, or soak up water, so it holds paint and stands up at ground level where wood trim takes the most abuse. Both openings are the same size and get the same treatment on three sides — two legs and the head, including the clipped corners at the top.</p>
+  <div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Remove existing wood trim on three sides of both garage openings</div><div class="scope-item"><div class="scope-dot"></div>Install new AZEK 1x6 trim on the legs and head</div><div class="scope-item"><div class="scope-dot"></div>Install new AZEK PVC brickmold against the brick on the legs and head</div><div class="scope-item"><div class="scope-dot"></div>Cut and fit the clipped (angled) corners at the top of each opening</div><div class="scope-item"><div class="scope-dot"></div>Painted Eldridge Gray</div><div class="scope-item"><div class="scope-dot"></div>Seal and caulk joints to the brick and the door frame</div><div class="scope-item"><div class="scope-dot"></div>Haul away old trim and clean up</div></div>
+  <div class="section-label">Opening Details</div>
+  <div class="sub-card"><div class="sub-card-cat">Both openings · same size</div><div class="sub-card-title">Overhead Garage Door Openings</div><div class="spec-row"><span class="spec-key">Openings</span><span class="spec-val">2</span></div><div class="spec-row"><span class="spec-key">Sides trimmed</span><span class="spec-val">3 — two legs and head</span></div><div class="spec-row"><span class="spec-key">Leg height</span><span class="spec-val">8 ft</span></div><div class="spec-row"><span class="spec-key">Head width</span><span class="spec-val">10 ft</span></div><div class="spec-row"><span class="spec-key">Top corners</span><span class="spec-val">Clipped / angled</span></div><div class="spec-row"><span class="spec-key">Trim</span><span class="spec-val">AZEK 1x6</span></div><div class="spec-row"><span class="spec-key">Brickmold</span><span class="spec-val">AZEK PVC brickmold</span></div><div class="spec-row"><span class="spec-key">Color</span><span class="spec-val">Eldridge Gray</span></div></div>
+  <div class="photo-section"><div class="photo-section-label">Site Photos</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/garage-front.jpg" alt="Garage opening — front" loading="lazy"><div class="photo-label">Garage opening — front</div></div><div class="photo-item"><img src="photos/trim-profile.jpg" alt="Existing trim profile" loading="lazy"><div class="photo-label">Existing trim profile</div></div></div></div>
+  <div class="photo-section"><div class="photo-section-label">Site Photos</div><div class="photo-collage cols-1"><div class="photo-item"><img src="photos/leg-height.jpg" alt="Leg height and clipped corner" loading="lazy"><div class="photo-label">Leg height and clipped corner</div></div></div></div>
+</div></div>
+
+<div class="detail-page" id="page-weatherstrip"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Garage Door Weatherstrip</div></div><div class="detail-body">
+  <div class="detail-cat">Exterior · Both Garages</div>
+  <div class="detail-title">Garage Door Weatherstrip Replacement</div>
+  <p class="detail-desc">The weatherstrip that seals against the face of the garage door will be replaced on both openings along with the trim. New weatherstrip keeps drafts, water, and pests out along the sides and top of the door.</p>
+  <div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Remove existing weatherstrip on both legs and the head of each opening</div><div class="scope-item"><div class="scope-dot"></div>Install new garage door weatherstrip, set tight to the closed door</div><div class="scope-item"><div class="scope-dot"></div>Both garage openings — about 52 linear feet total</div></div>
+  <div class="photo-section"><div class="photo-section-label">Site Photos</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/width-1.jpg" alt="Opening width at the slab" loading="lazy"><div class="photo-label">Opening width at the slab</div></div><div class="photo-item"><img src="photos/width-2.jpg" alt="Opening width at the slab" loading="lazy"><div class="photo-label">Opening width at the slab</div></div></div></div>
+</div></div>
+
+<div class="detail-page" id="page-pantry"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Kitchen Pantry Closet</div></div><div class="detail-body">
+  <div class="detail-cat">Interior · Kitchen</div>
+  <div class="detail-title">Pantry Closet Replacement &amp; Reinforcement</div>
+  <p class="detail-desc">The kitchen pantry closet will be rebuilt and reinforced with prefinished cabinet-grade plywood. The UV-coated finish is applied at the factory, so the shelving is ready to use as soon as it's in. Everything is cut to fit on site.</p>
+  <div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Remove existing pantry shelving</div><div class="scope-item"><div class="scope-dot"></div>Replace and reinforce with 5/8&quot; UV-coated prefinished cabinet plywood</div><div class="scope-item"><div class="scope-dot"></div>Cut and fit on site</div><div class="scope-item"><div class="scope-dot"></div>Clean up and haul away old material</div></div>
+  <div class="sub-card"><div class="sub-card-cat">Material</div><div class="sub-card-title">Prefinished Cabinet Plywood</div><div class="spec-row"><span class="spec-key">Thickness</span><span class="spec-val">5/8 in</span></div><div class="spec-row"><span class="spec-key">Finish</span><span class="spec-val">UV-coated, prefinished</span></div><div class="spec-row"><span class="spec-key">Sheet size</span><span class="spec-val">4 x 8 ft</span></div><div class="spec-row"><span class="spec-key">Quantity</span><span class="spec-val">2 sheets</span></div></div>
+</div></div>
+
+<div class="detail-page" id="page-next-steps">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">What Happens Next</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Next Steps</div>
+    <div class="detail-title">Here's Where We Go From Here</div>
+    <p class="detail-desc">Here's the process from here.</p>
+    <div class="next-item"><div class="next-num">1</div><div>We'll price out materials and labor and put together your estimate.</div></div>
+    <div class="next-item"><div class="next-num">2</div><div>You'll get the estimate by email through Jobber. Look it over and reach out with any questions.</div></div>
+    <div class="next-item"><div class="next-num">3</div><div>Once it's approved, we'll order materials and get you on the schedule.</div></div>
+    <div style="margin-top:36px; padding-top:24px; border-top:1px solid rgba(184,146,42,0.15); font-size:13px; color:var(--muted); line-height:1.8;">
+      <strong style="color:var(--text);">Dan Cleveland</strong><br>
+      Meat &amp; Potatoes Carpentry LLC · Waterford, WI<br>
+      <a href="mailto:meatandpotatoescarpentry@gmail.com" style="color:var(--gold); text-decoration:none;">meatandpotatoescarpentry@gmail.com</a> &nbsp;·&nbsp;
+      <a href="tel:4144045470" style="color:var(--gold); text-decoration:none;">(414) 404-5470</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(id) {
+    document.getElementById('landing').style.display = 'none';
+    document.querySelectorAll('.detail-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  function showLanding() {
+    document.querySelectorAll('.detail-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('landing').style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
