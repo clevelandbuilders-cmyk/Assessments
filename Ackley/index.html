@@ -366,7 +366,7 @@ const STANDS=[
   {n:2,x:640,y:830,dir:270,name:'Marsh Edge',txt:'Zone 2 · Marsh Edge. Where the big open marsh meets the darker timber along the creek. Deer bed out in the marsh and step into the timber at dusk. Set up in the timber 60–100 yards east of the open edge, facing west. Wind: W, so your scent blows east, away from the marsh. Evenings.'},
   {n:3,x:1090,y:985,dir:270,name:'Field Edge',txt:'Zone 3 · Field Edge. The public land runs right up to private ag fields on the east side. Deer bed in the public cover and feed in those fields at night. Set up 100–200 yards inside the timber on a trail that heads toward the fields, so you catch them before dark. Don’t sit right on the field edge. Wind: W or NW. Evenings and the rut. Stay on the public side of the red lines.'},
   {n:4,x:900,y:1885,dir:0,name:'County Line',txt:'Zone 4 · County Line block. This is Marathon County Forest, north of County G and south of the county line, and it connects straight to the Langlade block. Swamp and aspen with hardwood islands. Hunt the hardwood islands and where they meet the swamp. Wind: N, walking in from G on the south side. The county says this unit gets heavy hunting pressure, so go weekdays or go deep.'},
-  {n:5,x:700,y:2370,dir:270,name:'South of G',txt:'Zone 5 · South of G. The southern lobe of the Marathon forest, with private land around three sides. Deer from the private ground use it as cover. Set up toward the west side of the block, where it borders private land. Wind: W. Walk in from G. Evenings.'}
+  {n:5,x:700,y:2270,dir:270,name:'South of G',txt:'Zone 5 · South of G. The southern lobe of the Marathon forest, with private land around three sides. Deer from the private ground use it as cover. Set up toward the west side of the block, where it borders private land. Wind: W. Walk in from G. Evenings.'}
 ];
 function ring(x,y,r,col,op){const g=new THREE.RingGeometry(r*0.8,r,48);g.rotateX(-Math.PI/2);
   const m=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,depthTest:false,side:THREE.DoubleSide}));
@@ -387,7 +387,7 @@ const PX=5000/144; // ft per screenshot pixel
 blob(450,960,110*PX,190*PX,0x7a4fd0,.28); // big open marsh: bedding, stay out
 blob(215,1390,45*PX,45*PX,0xd4261c,.35);  // Ackley lot on 64: heavy pressure
 blob(1150,1385,40*PX,30*PX,0xd4261c,.25); // 64 at the creek
-const ACCESS=[[[1215,1385],[1120,1300],[1060,1210],[1000,1120],[880,1085],[760,1080]],[[980,2080],[950,1990],[910,1900]],[[600,2085],[640,2200],[690,2350]]];
+const ACCESS=[[[1215,1385],[1120,1300],[1060,1210],[1000,1120],[880,1085],[760,1080]],[[980,2080],[950,1990],[910,1900]],[[600,2085],[640,2180],[690,2255]]];
 const accessLines=ACCESS.map(()=>{const l=new THREE.Line(new THREE.BufferGeometry(),new THREE.LineDashedMaterial({color:0xffffff,dashSize:160,gapSize:110,depthTest:false}));overlays.add(l);return l;});
 function placeOverlays(){
   overlays.children.forEach(o=>{
