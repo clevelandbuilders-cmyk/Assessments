@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meat & Potatoes Carpentry — Zagrodnik Window Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:  #111009;
+    --dark:   #1C1A12;
+    --gold:   #B8922A;
+    --gold-lt:#D4AC48;
+    --gold-dim:#6B5318;
+    --cream:  #F4EFE0;
+    --warm:   #FAF7F0;
+    --text:   #2A2519;
+    --muted:  #7A7260;
+    --border: rgba(184,146,42,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); font-family: "DM Sans", sans-serif; color: var(--cream); min-height: 100vh; }
+
+  #landing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 24px;
+    text-align: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 25% 40%, rgba(184,146,42,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(184,146,42,0.06) 0%, transparent 50%),
+      var(--black);
+  }
+  .gold-line-top { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .brand-name { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 36px; }
+  .landing-greeting { font-family: "Playfair Display", serif; font-size: clamp(26px, 6vw, 42px); font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 16px; max-width: 560px; }
+  .landing-sub { font-size: 14px; color: rgba(244,239,224,0.45); line-height: 1.75; max-width: 440px; margin: 0 auto 52px; }
+  .gold-divider { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 52px; opacity: 0.5; }
+  .nav-links { display: flex; flex-direction: column; gap: 2px; width: 100%; max-width: 380px; }
+  .nav-link { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); cursor: pointer; transition: background 0.2s, border-color 0.2s; text-decoration: none; color: var(--cream); }
+  .nav-link:hover { background: rgba(184,146,42,0.08); border-color: rgba(184,146,42,0.5); }
+  .nav-link-left { display: flex; align-items: center; gap: 16px; }
+  .nav-num { font-family: "Playfair Display", serif; font-size: 11px; color: var(--gold-dim); width: 20px; flex-shrink: 0; }
+  .nav-label-wrap { text-align: left; }
+  .nav-cat { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+  .nav-title { font-size: 14px; font-weight: 500; color: var(--cream); }
+  .nav-arrow { color: var(--gold-dim); font-size: 14px; transition: transform 0.2s, color 0.2s; }
+  .nav-link:hover .nav-arrow { transform: translateX(4px); color: var(--gold); }
+  .landing-footer { position: absolute; bottom: 24px; font-size: 11px; color: rgba(244,239,224,0.2); letter-spacing: 0.08em; }
+  .detail-page { display: none; min-height: 100vh; background: var(--warm); color: var(--text); }
+  .detail-page.active { display: block; }
+  .detail-header { background: var(--black); padding: 20px 28px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .back-btn { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); cursor: pointer; padding: 8px 0; border: none; background: none; font-family: "DM Sans", sans-serif; transition: opacity 0.2s; }
+  .back-btn:hover { opacity: 0.7; }
+  .detail-header-title { font-family: "Playfair Display", serif; font-size: 15px; color: var(--cream); flex: 1; }
+  .detail-body { padding: 36px 28px 64px; max-width: 680px; margin: 0 auto; }
+  .detail-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .detail-title { font-family: "Playfair Display", serif; font-size: clamp(22px, 5vw, 30px); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(184,146,42,0.2); }
+  .detail-desc { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 28px; }
+  .scope-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+  .scope-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: white; border-left: 2px solid var(--gold); font-size: 14px; color: var(--text); line-height: 1.45; }
+  .scope-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .note-box { padding: 16px 20px; background: rgba(184,146,42,0.07); border-left: 3px solid var(--gold); font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.65; margin-bottom: 28px; }
+  .sub-card { padding: 18px 20px; background: white; border: 1px solid rgba(184,146,42,0.18); margin-bottom: 8px; }
+  .sub-card-cat { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+  .sub-card-title { font-weight: 500; font-size: 15px; margin-bottom: 5px; }
+  .sub-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .spec-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(184,146,42,0.08); gap: 12px; }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-key { color: var(--muted); flex-shrink: 0; }
+  .spec-val { color: var(--text); font-weight: 500; text-align: right; }
+  .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 28px 0 10px; }
+  .siding-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+  .siding-table th { background: rgba(184,146,42,0.1); color: var(--gold); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(184,146,42,0.2); }
+  .siding-table td { padding: 9px 12px; border-bottom: 1px solid rgba(184,146,42,0.08); color: var(--text); background: white; }
+  .siding-table tr:last-child td { background: rgba(184,146,42,0.06); font-weight: 500; color: var(--gold-dim); border-top: 1px solid rgba(184,146,42,0.2); }
+  .referral-item { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(184,146,42,0.12); }
+  .referral-item:last-child { border-bottom: none; }
+  .ref-trade { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); width: 56px; flex-shrink: 0; }
+  .ref-name { font-size: 15px; font-weight: 500; flex: 1; }
+  .ref-co { font-size: 13px; color: var(--muted); }
+  .ref-phone { font-size: 14px; font-weight: 500; color: var(--gold); text-decoration: none; letter-spacing: 0.02em; }
+  .ref-phone:hover { text-decoration: underline; }
+  .next-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(184,146,42,0.08); font-size: 14px; color: var(--text); line-height: 1.6; }
+  .next-item:last-child { border-bottom: none; }
+  .next-num { font-family: "Playfair Display", serif; font-size: 18px; color: rgba(184,146,42,0.35); width: 24px; flex-shrink: 0; line-height: 1.4; }
+  .photo-section { margin-top: 24px; }
+  .photo-section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .photo-collage { display: grid; gap: 4px; margin-bottom: 8px; }
+  .photo-collage.cols-1 { grid-template-columns: 1fr; }
+  .photo-collage.cols-2 { grid-template-columns: 1fr 1fr; }
+  .photo-collage.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .photo-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: #1a1a1a; }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.75)); color: rgba(244,239,224,0.9); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 10px 6px; font-family: "DM Sans", sans-serif; }
+</style>
+</head>
+<body>
+<div id="landing">
+  <div class="gold-line-top"></div>
+  <img src="https://clevelandbuilders-cmyk.github.io/Assessments/logo.png" alt="M&amp;P Carpentry Logo" style="width:90px;height:90px;object-fit:contain;margin-bottom:24px;">
+  <div class="brand-name">Meat &amp; Potatoes Carpentry</div>
+  <h1 class="landing-greeting">Thank you for having us out, Michelle.</h1>
+  <p class="landing-sub">We've put together a summary of everything we discussed during our visit. Tap any item below to see details and what's involved in the work.</p>
+  <div class="gold-divider"></div>
+  <div class="nav-links"><a class="nav-link" onclick="showPage('overview')"><div class="nav-link-left"><div class="nav-num">01</div><div class="nav-label-wrap"><div class="nav-cat">Windows</div><div class="nav-title">South Side Windows, Full-Frame Replacement</div></div></div><div class="nav-arrow">→</div></a><a class="nav-link" onclick="showPage('living')"><div class="nav-link-left"><div class="nav-num">02</div><div class="nav-label-wrap"><div class="nav-cat">First Floor · Living Room</div><div class="nav-title">4 Casement Pairs with Transoms</div></div></div><div class="nav-arrow">→</div></a><a class="nav-link" onclick="showPage('game')"><div class="nav-link-left"><div class="nav-num">03</div><div class="nav-label-wrap"><div class="nav-cat">Lower Level · Game Room</div><div class="nav-title">3 Casement Pairs</div></div></div><div class="nav-arrow">→</div></a><a class="nav-link" onclick="showPage('craft')"><div class="nav-link-left"><div class="nav-num">04</div><div class="nav-label-wrap"><div class="nav-cat">Second Floor · Craft Room</div><div class="nav-title">3 Double-Hung Windows</div></div></div><div class="nav-arrow">→</div></a><a class="nav-link" onclick="showPage('screens')"><div class="nav-link-left"><div class="nav-num">05</div><div class="nav-label-wrap"><div class="nav-cat">Option</div><div class="nav-title">Roll Screens</div></div></div><div class="nav-arrow">→</div></a><a class="nav-link" onclick="showPage('finish')"><div class="nav-link-left"><div class="nav-num">06</div><div class="nav-label-wrap"><div class="nav-cat">Finishing</div><div class="nav-title">Interior Touch-Ups</div></div></div><div class="nav-arrow">→</div></a><a class="nav-link" onclick="showPage('next-steps')"><div class="nav-link-left"><div class="nav-num">07</div><div class="nav-label-wrap"><div class="nav-cat">Next Steps</div><div class="nav-title">What Happens Next</div></div></div><div class="nav-arrow">→</div></a></div>
+  <div class="landing-footer">meatandpotatoescarpentry.com &nbsp;·&nbsp; Michelle Zagrodnik &nbsp;·&nbsp; November 2026</div>
+</div>
+
+<div class="detail-page" id="page-overview"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">South Side Windows</div></div><div class="detail-body">
+  <div class="detail-cat">Windows · 1006 N Blue Spruce Circle</div>
+  <div class="detail-title">South Side Windows, Full-Frame Replacement</div>
+  <p class="detail-desc">We're starting on the south side of the house: four windows in the living room on the first floor, three in the lower-level game room, and three in the upstairs craft room. Every window is a Pella Lifestyle Series, a wood window with an aluminum-clad exterior, so you keep real wood on the inside and a low-maintenance finish outside. We're keeping one color scheme across the whole house so everything matches as more windows are done.</p><p class="detail-desc">These are full-frame replacements. The old window comes out frame and all, and the new window goes into the rough opening. To keep your interior trim, we leave the interior jamb extensions and casing in place and set the new window to them.</p><div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Remove the existing windows, frame and all, at each opening</div><div class="scope-item"><div class="scope-dot"></div>Keep the existing interior jamb extensions and casing in place</div><div class="scope-item"><div class="scope-dot"></div>Set, shim, fasten, flash and insulate each new Pella Lifestyle window</div><div class="scope-item"><div class="scope-dot"></div>Seal the exterior to the brick</div><div class="scope-item"><div class="scope-dot"></div>Haul away the old windows and all job debris</div></div><div class="section-label">Window Schedule (width x height)</div><table class="siding-table"><tr><th>Room</th><th>Type</th><th>Size</th><th>Qty</th></tr><tr><td>Living Room</td><td>2-wide casement + transom</td><td>39-1/2" x 81-1/2"</td><td>4</td></tr><tr><td>Game Room</td><td>2-wide casement</td><td>55-1/2" x 46-1/2"</td><td>3</td></tr><tr><td>Craft Room</td><td>Double hung</td><td>40" x 53-1/2"</td><td>3</td></tr><tr><td>Total</td><td></td><td></td><td>10</td></tr></table><div class="sub-card"><div class="sub-card-cat">Whole-house color scheme</div><div class="sub-card-title">What every window gets</div><div class="spec-row"><span class="spec-key">Window</span><span class="spec-val">Pella Lifestyle Series</span></div><div class="spec-row"><span class="spec-key">Exterior color</span><span class="spec-val">Linen White</span></div><div class="spec-row"><span class="spec-key">Interior</span><span class="spec-val">Early American stain</span></div><div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Brown</span></div><div class="spec-row"><span class="spec-key">Grilles</span><span class="spec-val">Simulated divided light</span></div></div><div class="note-box" style="margin-top:24px;">The craft room is the one exception: its interior is Linen White instead of the Early American stain. Details are on the craft room page.</div><div class="photo-section"><div class="photo-section-label">Your Home</div><div class="photo-collage cols-1"><div class="photo-item"><img src="photos/home-exterior.jpg" alt="Back of the home" loading="lazy"><div class="photo-label">Back of the home</div></div></div></div>
+</div></div>
+
+<div class="detail-page" id="page-living"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Living Room</div></div><div class="detail-body">
+  <div class="detail-cat">First Floor · South Side · Living Room</div>
+  <div class="detail-title">Four Casement Pairs with Transoms</div>
+  <p class="detail-desc">The four living room windows are identical: a pair of casements side by side with a fixed transom window above. The new Pella Lifestyle units keep that same layout and grille pattern, working left to right across the wall.</p><div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Full-frame removal of all four units</div><div class="scope-item"><div class="scope-dot"></div>New two-wide casement with transom above at each opening</div><div class="scope-item"><div class="scope-dot"></div>Existing interior jamb extensions and casing stay in place</div></div><div class="photo-section"><div class="photo-section-label">Inside</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/living-int-1.jpg" alt="Living room" loading="lazy"><div class="photo-label">Living room</div></div><div class="photo-item"><img src="photos/living-int-2.jpg" alt="Living room" loading="lazy"><div class="photo-label">Living room</div></div><div class="photo-item"><img src="photos/living-int-3.jpg" alt="Living room" loading="lazy"><div class="photo-label">Living room</div></div><div class="photo-item"><img src="photos/living-int-4.jpg" alt="Living room" loading="lazy"><div class="photo-label">Living room</div></div></div></div><div class="photo-section"><div class="photo-section-label">Outside</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/living-ext-1.jpg" alt="Living room, exterior" loading="lazy"><div class="photo-label">Living room, exterior</div></div><div class="photo-item"><img src="photos/living-ext-2.jpg" alt="Living room, exterior" loading="lazy"><div class="photo-label">Living room, exterior</div></div><div class="photo-item"><img src="photos/living-ext-3.jpg" alt="Living room, exterior" loading="lazy"><div class="photo-label">Living room, exterior</div></div></div></div><div class="sub-card"><div class="sub-card-cat">All four · same size</div><div class="sub-card-title">Living Room Windows</div><div class="spec-row"><span class="spec-key">Quantity</span><span class="spec-val">4</span></div><div class="spec-row"><span class="spec-key">Style</span><span class="spec-val">Two-wide casement with transom</span></div><div class="spec-row"><span class="spec-key">Overall frame size</span><span class="spec-val">39-1/2" W x 81-1/2" H, including transom</span></div><div class="spec-row"><span class="spec-key">Transom height</span><span class="spec-val">19"</span></div><div class="spec-row"><span class="spec-key">Casement grilles</span><span class="spec-val">2 x 5</span></div><div class="spec-row"><span class="spec-key">Transom grilles</span><span class="spec-val">1 x 4</span></div><div class="spec-row"><span class="spec-key">Window</span><span class="spec-val">Pella Lifestyle Series</span></div><div class="spec-row"><span class="spec-key">Exterior color</span><span class="spec-val">Linen White</span></div><div class="spec-row"><span class="spec-key">Interior</span><span class="spec-val">Early American stain</span></div><div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Brown</span></div><div class="spec-row"><span class="spec-key">Grilles</span><span class="spec-val">Simulated divided light</span></div><div class="spec-row"><span class="spec-key">Installation</span><span class="spec-val">Full-frame replacement</span></div></div>
+</div></div>
+
+<div class="detail-page" id="page-game"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Game Room</div></div><div class="detail-body">
+  <div class="detail-cat">Lower Level · Game Room</div>
+  <div class="detail-title">Three Casement Pairs</div>
+  <p class="detail-desc">The three game room windows on the lower level are identical two-wide casements. They get the same colors and simulated divided light grilles as the rest of the house.</p><div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Full-frame removal of all three units</div><div class="scope-item"><div class="scope-dot"></div>New two-wide casement at each opening</div><div class="scope-item"><div class="scope-dot"></div>Existing interior jamb extensions and casing stay in place</div></div><div class="photo-section"><div class="photo-section-label">Outside</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/game-ext-1.jpg" alt="Game room, exterior" loading="lazy"><div class="photo-label">Game room, exterior</div></div><div class="photo-item"><img src="photos/game-ext-2.jpg" alt="Game room, exterior" loading="lazy"><div class="photo-label">Game room, exterior</div></div><div class="photo-item"><img src="photos/game-ext-3.jpg" alt="Game room, exterior" loading="lazy"><div class="photo-label">Game room, exterior</div></div></div></div><div class="sub-card"><div class="sub-card-cat">All three · same size</div><div class="sub-card-title">Game Room Windows</div><div class="spec-row"><span class="spec-key">Quantity</span><span class="spec-val">3</span></div><div class="spec-row"><span class="spec-key">Style</span><span class="spec-val">Two-wide casement</span></div><div class="spec-row"><span class="spec-key">Overall frame size</span><span class="spec-val">55-1/2" W x 46-1/2" H</span></div><div class="spec-row"><span class="spec-key">Grilles</span><span class="spec-val">2 x 3</span></div><div class="spec-row"><span class="spec-key">Window</span><span class="spec-val">Pella Lifestyle Series</span></div><div class="spec-row"><span class="spec-key">Exterior color</span><span class="spec-val">Linen White</span></div><div class="spec-row"><span class="spec-key">Interior</span><span class="spec-val">Early American stain</span></div><div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Brown</span></div><div class="spec-row"><span class="spec-key">Grilles</span><span class="spec-val">Simulated divided light</span></div><div class="spec-row"><span class="spec-key">Installation</span><span class="spec-val">Full-frame replacement</span></div></div>
+</div></div>
+
+<div class="detail-page" id="page-craft"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Craft Room</div></div><div class="detail-body">
+  <div class="detail-cat">Second Floor · Craft Room</div>
+  <div class="detail-title">Three Double-Hung Windows</div>
+  <p class="detail-desc">The three craft room windows upstairs are identical double hungs. This room gets a Linen White interior instead of the Early American stain, with brown hardware and a tan jamb liner. These are ordered without a lift rail.</p><div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Full-frame removal of all three units</div><div class="scope-item"><div class="scope-dot"></div>New double-hung window at each opening</div><div class="scope-item"><div class="scope-dot"></div>Existing interior jamb extensions and casing stay in place</div></div><div class="photo-section"><div class="photo-section-label">Inside</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/craft-int-1.jpg" alt="Craft room" loading="lazy"><div class="photo-label">Craft room</div></div><div class="photo-item"><img src="photos/craft-int-2.jpg" alt="Craft room" loading="lazy"><div class="photo-label">Craft room</div></div><div class="photo-item"><img src="photos/craft-int-3.jpg" alt="Craft room" loading="lazy"><div class="photo-label">Craft room</div></div></div></div><div class="photo-section"><div class="photo-section-label">Outside</div><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/craft-ext-1.jpg" alt="Craft room, exterior" loading="lazy"><div class="photo-label">Craft room, exterior</div></div><div class="photo-item"><img src="photos/craft-ext-2.jpg" alt="Craft room, exterior" loading="lazy"><div class="photo-label">Craft room, exterior</div></div><div class="photo-item"><img src="photos/craft-ext-3.jpg" alt="Craft room, exterior" loading="lazy"><div class="photo-label">Craft room, exterior</div></div></div></div><div class="sub-card"><div class="sub-card-cat">All three · same size</div><div class="sub-card-title">Craft Room Windows</div><div class="spec-row"><span class="spec-key">Quantity</span><span class="spec-val">3</span></div><div class="spec-row"><span class="spec-key">Style</span><span class="spec-val">Double hung</span></div><div class="spec-row"><span class="spec-key">Overall frame size</span><span class="spec-val">40" W x 53-1/2" H</span></div><div class="spec-row"><span class="spec-key">Grilles</span><span class="spec-val">4 x 2, simulated divided light</span></div><div class="spec-row"><span class="spec-key">Window</span><span class="spec-val">Pella Lifestyle Series</span></div><div class="spec-row"><span class="spec-key">Exterior color</span><span class="spec-val">Linen White</span></div><div class="spec-row"><span class="spec-key">Interior</span><span class="spec-val">Linen White</span></div><div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Brown</span></div><div class="spec-row"><span class="spec-key">Jamb liner</span><span class="spec-val">Tan</span></div><div class="spec-row"><span class="spec-key">Lift rail</span><span class="spec-val">None</span></div><div class="spec-row"><span class="spec-key">Installation</span><span class="spec-val">Full-frame replacement</span></div></div>
+</div></div>
+
+<div class="detail-page" id="page-screens"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Roll Screens</div></div><div class="detail-body">
+  <div class="detail-cat">Option · All Windows</div>
+  <div class="detail-title">Full Screens or Roll Screens</div>
+  <p class="detail-desc">Every window comes with a standard full screen. As an option, we'll price Pella Rolscreen retractable screens, which roll out of sight when the window is closed and roll down when you open it. You get a clear view through the glass most of the year and a screen only when you want one.</p><div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Standard: full screen on every window</div><div class="scope-item"><div class="scope-dot"></div>Option: Rolscreen retractable screens, priced separately on your estimate</div></div><div class="note-box" style="margin-top:24px;">Pricing for both screen choices will be on your written estimate so you can compare.</div>
+</div></div>
+
+<div class="detail-page" id="page-finish"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Interior Touch-Ups</div></div><div class="detail-body">
+  <div class="detail-cat">Finishing</div>
+  <div class="detail-title">Interior Touch-Ups Where Needed</div>
+  <p class="detail-desc">Because we're keeping your interior jamb extensions and casing, the new windows tie into the existing trim. Where the mullions (the vertical bars between units) meet the jamb extensions, there may be some marks or scarring left behind once the old windows are out. If so, we'll bring in our finishing partner to touch those spots up so they blend in.</p><div class="scope-list"><div class="scope-item"><div class="scope-dot"></div>Touch-up where the mullions meet the existing jamb extensions, as needed</div><div class="scope-item"><div class="scope-dot"></div>Matched to your existing interior finish</div></div><div class="sub-card"><div class="sub-card-cat">Who Does the Work</div><div class="sub-card-title">Boechler Painting and Restoration</div><p class="detail-desc" style="margin:8px 0 0;">Travis and his crew handle the finishing on our projects. We coordinate the schedule so the touch-ups follow the window installation.</p></div><div class="note-box" style="margin-top:24px;">We won't know exactly how much touch-up is needed until the old windows are out. This covers touch-up at the window openings only.</div>
+</div></div>
+
+<div class="detail-page" id="page-next-steps">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">What Happens Next</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Next Steps</div>
+    <div class="detail-title">Here's Where We Go From Here</div>
+    <p class="detail-desc">Nothing more is needed from you right now. Here's the process from here.</p>
+    <div class="next-item"><div class="next-num">1</div><div>We'll send the window sizes and options to Pella for pricing.</div></div>
+    <div class="next-item"><div class="next-num">2</div><div>Once Pella's quote is back, we'll put together your estimate with materials and labor.</div></div>
+    <div class="next-item"><div class="next-num">3</div><div>You'll get the estimate by email through Jobber. Look it over and reach out with any questions.</div></div>
+    <div class="next-item"><div class="next-num">4</div><div>Once it's approved, we'll order the windows and get you on the schedule.</div></div>
+    <div style="margin-top:36px; padding-top:24px; border-top:1px solid rgba(184,146,42,0.15); font-size:13px; color:var(--muted); line-height:1.8;">
+      <strong style="color:var(--text);">Dan Cleveland</strong><br>
+      Meat &amp; Potatoes Carpentry LLC · Waterford, WI<br>
+      <a href="mailto:meatandpotatoescarpentry@gmail.com" style="color:var(--gold); text-decoration:none;">meatandpotatoescarpentry@gmail.com</a> &nbsp;·&nbsp;
+      <a href="tel:4144045470" style="color:var(--gold); text-decoration:none;">(414) 404-5470</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(id) {
+    document.getElementById('landing').style.display = 'none';
+    document.querySelectorAll('.detail-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  function showLanding() {
+    document.querySelectorAll('.detail-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('landing').style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
