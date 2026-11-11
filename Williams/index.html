@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meat & Potatoes Carpentry — Williams Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:  #111009;
+    --dark:   #1C1A12;
+    --gold:   #B8922A;
+    --gold-lt:#D4AC48;
+    --gold-dim:#6B5318;
+    --cream:  #F4EFE0;
+    --warm:   #FAF7F0;
+    --text:   #2A2519;
+    --muted:  #7A7260;
+    --border: rgba(184,146,42,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); font-family: "DM Sans", sans-serif; color: var(--cream); min-height: 100vh; }
+
+  #landing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 24px;
+    text-align: center;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 25% 40%, rgba(184,146,42,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(184,146,42,0.06) 0%, transparent 50%),
+      var(--black);
+  }
+  .gold-line-top { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .brand-name { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 36px; }
+  .landing-greeting { font-family: "Playfair Display", serif; font-size: clamp(26px, 6vw, 42px); font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 16px; max-width: 560px; }
+  .landing-sub { font-size: 14px; color: rgba(244,239,224,0.45); line-height: 1.75; max-width: 440px; margin: 0 auto 52px; }
+  .gold-divider { width: 48px; height: 1px; background: var(--gold); margin: 0 auto 52px; opacity: 0.5; }
+  .nav-links { display: flex; flex-direction: column; gap: 2px; width: 100%; max-width: 380px; }
+  .nav-link { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); cursor: pointer; transition: background 0.2s, border-color 0.2s; text-decoration: none; color: var(--cream); }
+  .nav-link:hover { background: rgba(184,146,42,0.08); border-color: rgba(184,146,42,0.5); }
+  .nav-link-left { display: flex; align-items: center; gap: 16px; }
+  .nav-num { font-family: "Playfair Display", serif; font-size: 11px; color: var(--gold-dim); width: 20px; flex-shrink: 0; }
+  .nav-label-wrap { text-align: left; }
+  .nav-cat { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+  .nav-title { font-size: 14px; font-weight: 500; color: var(--cream); }
+  .nav-arrow { color: var(--gold-dim); font-size: 14px; transition: transform 0.2s, color 0.2s; }
+  .nav-link:hover .nav-arrow { transform: translateX(4px); color: var(--gold); }
+  .landing-footer { position: absolute; bottom: 24px; font-size: 11px; color: rgba(244,239,224,0.2); letter-spacing: 0.08em; }
+  .detail-page { display: none; min-height: 100vh; background: var(--warm); color: var(--text); }
+  .detail-page.active { display: block; }
+  .detail-header { background: var(--black); padding: 20px 28px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .back-btn { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); cursor: pointer; padding: 8px 0; border: none; background: none; font-family: "DM Sans", sans-serif; transition: opacity 0.2s; }
+  .back-btn:hover { opacity: 0.7; }
+  .detail-header-title { font-family: "Playfair Display", serif; font-size: 15px; color: var(--cream); flex: 1; }
+  .detail-body { padding: 36px 28px 64px; max-width: 680px; margin: 0 auto; }
+  .detail-cat { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .detail-title { font-family: "Playfair Display", serif; font-size: clamp(22px, 5vw, 30px); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(184,146,42,0.2); }
+  .detail-desc { font-size: 15px; line-height: 1.8; color: var(--text); margin-bottom: 28px; }
+  .scope-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+  .scope-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: white; border-left: 2px solid var(--gold); font-size: 14px; color: var(--text); line-height: 1.45; }
+  .scope-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .note-box { padding: 16px 20px; background: rgba(184,146,42,0.07); border-left: 3px solid var(--gold); font-size: 13px; color: var(--muted); font-style: italic; line-height: 1.65; margin-bottom: 28px; }
+  .sub-card { padding: 18px 20px; background: white; border: 1px solid rgba(184,146,42,0.18); margin-bottom: 8px; }
+  .sub-card-cat { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+  .sub-card-title { font-weight: 500; font-size: 15px; margin-bottom: 5px; }
+  .sub-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .spec-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(184,146,42,0.08); gap: 12px; }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-key { color: var(--muted); flex-shrink: 0; }
+  .spec-val { color: var(--text); font-weight: 500; text-align: right; }
+  .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 28px 0 10px; }
+  .siding-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+  .siding-table th { background: rgba(184,146,42,0.1); color: var(--gold); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(184,146,42,0.2); }
+  .siding-table td { padding: 9px 12px; border-bottom: 1px solid rgba(184,146,42,0.08); color: var(--text); background: white; }
+  .siding-table tr:last-child td { background: rgba(184,146,42,0.06); font-weight: 500; color: var(--gold-dim); border-top: 1px solid rgba(184,146,42,0.2); }
+  .referral-item { display: flex; align-items: center; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(184,146,42,0.12); }
+  .referral-item:last-child { border-bottom: none; }
+  .ref-trade { font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); width: 56px; flex-shrink: 0; }
+  .ref-name { font-size: 15px; font-weight: 500; flex: 1; }
+  .ref-co { font-size: 13px; color: var(--muted); }
+  .ref-phone { white-space: nowrap; font-size: 14px; font-weight: 500; color: var(--gold); text-decoration: none; letter-spacing: 0.02em; }
+  .ref-phone:hover { text-decoration: underline; }
+  .next-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(184,146,42,0.08); font-size: 14px; color: var(--text); line-height: 1.6; }
+  .next-item:last-child { border-bottom: none; }
+  .next-num { font-family: "Playfair Display", serif; font-size: 18px; color: rgba(184,146,42,0.35); width: 24px; flex-shrink: 0; line-height: 1.4; }
+  .photo-section { margin-top: 24px; }
+  .photo-section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .photo-collage { display: grid; gap: 4px; margin-bottom: 8px; }
+  .photo-collage.cols-1 { grid-template-columns: 1fr; }
+  .photo-collage.cols-2 { grid-template-columns: 1fr 1fr; }
+  .photo-collage.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .photo-item { position: relative; overflow: hidden; aspect-ratio: 4/3; background: #1a1a1a; }
+  .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.75)); color: rgba(244,239,224,0.9); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 10px 6px; font-family: "DM Sans", sans-serif; }
+</style>
+</head>
+<body>
+<div id="landing">
+  <div class="gold-line-top"></div>
+  <img src="https://clevelandbuilders-cmyk.github.io/Assessments/logo.png" alt="M&amp;P Carpentry Logo" style="width:90px;height:90px;object-fit:contain;margin-bottom:24px;">
+  <div class="brand-name">Meat &amp; Potatoes Carpentry</div>
+  <h1 class="landing-greeting">Thank you for having us out, Josh.</h1>
+  <p class="landing-sub">Here's a summary of what we looked at in the garage for your golf simulator swing pocket. Tap any item below to see the details and what's involved in the work.</p>
+  <div class="gold-divider"></div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="showPage('framing')"><div class="nav-link-left"><div class="nav-num">01</div><div class="nav-label-wrap"><div class="nav-cat">Structural</div><div class="nav-title">Raise Ceiling Ties 18&quot; — Swing Pocket</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('electrical')"><div class="nav-link-left"><div class="nav-num">02</div><div class="nav-label-wrap"><div class="nav-cat">Electrical</div><div class="nav-title">Wiring, Opener Outlet &amp; Shop Lights</div></div></div><div class="nav-arrow">→</div></a>
+    <a class="nav-link" onclick="showPage('next-steps')"><div class="nav-link-left"><div class="nav-num">03</div><div class="nav-label-wrap"><div class="nav-cat">Next Steps</div><div class="nav-title">What Happens Next</div></div></div><div class="nav-arrow">→</div></a>
+  </div>
+  <div class="landing-footer">meatandpotatoescarpentry.com &nbsp;·&nbsp; Josh Williams &nbsp;·&nbsp; November 2026</div>
+</div>
+
+<div class="detail-page" id="page-framing"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Raise Ceiling Ties</div></div><div class="detail-body">
+  <div class="detail-cat">Garage · 2045 Cotton Tail Lane</div>
+  <div class="detail-title">Raise the Ceiling Ties 18&quot; for a Swing Pocket</div>
+  <p class="detail-desc">The heavy ceiling ties in your garage do an important job: they sit on the top of the side walls and tie them together, so the weight of the roof doesn't push the walls outward. Right now there are only a few of them, sitting about 9 ft off the floor, which is right where a golf swing needs room. We'll install new 2x8 ties on every rafter, 18&quot; higher than the existing ones, fastened to the rafters with heavy nailing at each end. Once the new ties are in, the old low ties come out and the ceiling opens up for your swing.</p>
+  <div class="scope-list">
+    <div class="scope-item"><div class="scope-dot"></div>Install 13 new 2x8 x 20 ft ties, one on every rafter, raised 18&quot; above the current ties</div>
+    <div class="scope-item"><div class="scope-dot"></div>Fasten each end to the rafter with extra nailing for the raised height</div>
+    <div class="scope-item"><div class="scope-dot"></div>Remove the existing low ceiling ties and the posts that run from them up to the ridge, once the new ties are in place</div>
+    <div class="scope-item"><div class="scope-dot"></div>Take down and set aside items hanging from the old ties (overhead storage rack and hooks) so the work area is clear</div>
+    <div class="scope-item"><div class="scope-dot"></div>Garage door opener stays and is reattached as needed</div>
+    <div class="scope-item"><div class="scope-dot"></div>Building permit from Brookfield; if they require an engineer's letter for the raised ties, we'll coordinate it</div>
+    <div class="scope-item"><div class="scope-dot"></div>Haul away the old lumber and clean up</div>
+  </div>
+  <div class="section-label">Framing Details</div>
+  <div class="sub-card"><div class="sub-card-cat">Existing roof</div><div class="sub-card-title">Stick-Framed Gable, Open Ceiling</div>
+    <div class="spec-row"><span class="spec-key">Garage width (wall to wall)</span><span class="spec-val">24 ft</span></div>
+    <div class="spec-row"><span class="spec-key">Rise to ridge</span><span class="spec-val">About 6 ft (6/12 pitch)</span></div>
+    <div class="spec-row"><span class="spec-key">Rafters</span><span class="spec-val">2x6 at 18&quot; on center</span></div>
+    <div class="spec-row"><span class="spec-key">Existing ties</span><span class="spec-val">About 9 ft above the floor</span></div>
+    <div class="spec-row"><span class="spec-key">New ties</span><span class="spec-val">13 &times; 2x8, every rafter</span></div>
+    <div class="spec-row"><span class="spec-key">Raise</span><span class="spec-val">18 in</span></div>
+    <div class="spec-row"><span class="spec-key">Span at new height</span><span class="spec-val">About 18 ft</span></div>
+  </div>
+  <div class="photo-section"><div class="photo-section-label">Site Photos</div><div class="photo-collage cols-1"><div class="photo-item"><img src="photos/ceiling-overview.jpg" alt="Ceiling framing overview" loading="lazy"><div class="photo-label">Ceiling framing and existing ties</div></div></div></div>
+  <div class="photo-section"><div class="photo-collage cols-1"><div class="photo-item"><img src="photos/hitting-area.jpg" alt="Hitting area" loading="lazy"><div class="photo-label">Hitting area and low ties</div></div></div></div>
+</div></div>
+
+<div class="detail-page" id="page-electrical"><div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">Electrical &amp; Lighting</div></div><div class="detail-body">
+  <div class="detail-cat">Garage · Electrical</div>
+  <div class="detail-title">Wiring, Opener Outlet &amp; Shop Lights</div>
+  <p class="detail-desc">The existing wiring runs in metal conduit fastened along the old ceiling ties, so it has to come down when the ties come out. The plan is to replace those runs with new Romex cable routed along the new framing, with one ceiling outlet that serves the garage door opener, the radon fan and the new lights. New LED shop lights will brighten the hitting area. Electrical work will be done by a licensed electrician; Dan will reach out to him directly and coordinate the timing with the framing work.</p>
+  <div class="scope-list">
+    <div class="scope-item"><div class="scope-dot"></div>Remove the conduit runs attached to the old ties</div>
+    <div class="scope-item"><div class="scope-dot"></div>Run new Romex along the new framing</div>
+    <div class="scope-item"><div class="scope-dot"></div>New ceiling outlet for the garage door opener; the same circuit also feeds the radon fan and the new lights</div>
+    <div class="scope-item"><div class="scope-dot"></div>Install 4 LED shop lights from Menards, about 5,000 lumens each</div>
+    <div class="scope-item"><div class="scope-dot"></div>Final layout and outlet protection per the electrician and Brookfield code</div>
+  </div>
+  <div class="section-label">Electrician</div>
+  <div class="sub-card">
+    <div class="referral-item"><div class="ref-trade">Electric</div><div style="flex:1"><div class="ref-name">Daniel Ring</div><div class="ref-co">Ring Electric LLC · ringelectricllc.com</div></div><a class="ref-phone" href="tel:4147027785">(414) 702-7785</a></div>
+  </div>
+  <div class="note-box">Dan will contact Daniel directly to get his price and line up the schedule, so you don't need to call him yourself.</div>
+  <div class="photo-section"><div class="photo-section-label">Site Photos</div><div class="photo-collage cols-1"><div class="photo-item"><img src="photos/ceiling-opener-radon.jpg" alt="Opener, conduit and radon pipe" loading="lazy"><div class="photo-label">Opener, conduit and radon pipe</div></div></div></div>
+  <div class="photo-section"><div class="photo-collage cols-2"><div class="photo-item"><img src="photos/opener-receptacle.jpg" alt="Opener outlet" loading="lazy"><div class="photo-label">Opener outlet</div></div><div class="photo-item"><img src="photos/wall-conduit.jpg" alt="Wall conduit" loading="lazy"><div class="photo-label">Wall conduit</div></div></div></div>
+</div></div>
+
+<div class="detail-page" id="page-next-steps">
+  <div class="detail-header"><button class="back-btn" onclick="showLanding()">← Back</button><div class="detail-header-title">What Happens Next</div></div>
+  <div class="detail-body">
+    <div class="detail-cat">Next Steps</div>
+    <div class="detail-title">Here's Where We Go From Here</div>
+    <p class="detail-desc">Here's the process from here.</p>
+    <div class="next-item"><div class="next-num">1</div><div>Dan will check with Brookfield on permit requirements and reach out to the electrician for his part.</div></div>
+    <div class="next-item"><div class="next-num">2</div><div>We'll price out materials and labor and put together your estimate.</div></div>
+    <div class="next-item"><div class="next-num">3</div><div>You'll get the estimate by email through Jobber. Look it over and reach out with any questions.</div></div>
+    <div class="next-item"><div class="next-num">4</div><div>Once it's approved, we'll order materials, pull the permit and get you on the schedule.</div></div>
+    <div style="margin-top:36px; padding-top:24px; border-top:1px solid rgba(184,146,42,0.15); font-size:13px; color:var(--muted); line-height:1.8;">
+      <strong style="color:var(--text);">Dan Cleveland</strong><br>
+      Meat &amp; Potatoes Carpentry LLC · Waterford, WI<br>
+      <a href="mailto:meatandpotatoescarpentry@gmail.com" style="color:var(--gold); text-decoration:none;">meatandpotatoescarpentry@gmail.com</a> &nbsp;·&nbsp;
+      <a href="tel:4144045470" style="color:var(--gold); text-decoration:none;">(414) 404-5470</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(id) {
+    document.getElementById('landing').style.display = 'none';
+    document.querySelectorAll('.detail-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  function showLanding() {
+    document.querySelectorAll('.detail-page').forEach(p => p.classList.remove('active'));
+    document.getElementById('landing').style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
