@@ -127,16 +127,16 @@ const nl2=new THREE.PointLight(0xff9a50,1400,50,2);const sfill=new THREE.PointLi
 // bottles in niche
 for(const [zz,h,c] of [[19,8,'#111'],[23,9.5,'#111'],[27,7,'#c9a26a']]){const b=new THREE.Mesh(new THREE.CylinderGeometry(1.4,1.4,h,20),M({color:c,roughness:.3,metalness:c=='#111'?.2:.8}));b.position.set(R-2.2,42+h/2,zz);b.castShadow=true;scene.add(b);}
 // rain head 14" round, toward bench end
-const arm=box(1,7,1,mats.black,98.5,EH-7,24);
-const head=new THREE.Mesh(new THREE.CylinderGeometry(7,7,.6,48),mats.black);head.position.set(99,EH-7.3,24.5);scene.add(head);
+const arm=box(1,7,1,mats.brass,98.5,EH-7,24);
+const head=new THREE.Mesh(new THREE.CylinderGeometry(7,7,.6,48),mats.brass);head.position.set(99,EH-7.3,24.5);scene.add(head);
 // slide bar + valve on back wall near partition end
-box(1.2,30,1.2,mats.black,R-2,36,58);
-const hs=new THREE.Mesh(new THREE.CylinderGeometry(1.4,1,4,20),mats.black);hs.rotation.z=Math.PI/2;hs.position.set(R-4,62,58.6);scene.add(hs);
-box(.6,7,5,mats.black,R-.6,40,52);const knob=new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,2.5,24),mats.black);knob.rotation.z=Math.PI/2;knob.position.set(R-1.8,44,54.5);scene.add(knob);
+box(1.2,30,1.2,mats.brass,R-2,36,58);
+const hs=new THREE.Mesh(new THREE.CylinderGeometry(1.4,1,4,20),mats.brass);hs.rotation.z=Math.PI/2;hs.position.set(R-4,62,58.6);scene.add(hs);
+box(.6,7,5,mats.brass,R-.6,40,52);const knob=new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,2.5,24),mats.brass);knob.rotation.z=Math.PI/2;knob.position.set(R-1.8,44,54.5);scene.add(knob);
 // linear drain along back wall
-box(1.5,.2,40,mats.black,R-3,0.45,14);
+box(1.5,.2,40,mats.brass,R-3,0.45,14);
 // steam head near floor
-box(1.5,1.5,4,mats.black,R-1.5,10,4);
+box(1.5,1.5,4,mats.brass,R-1.5,10,4);
 // rain light
 const rl=new THREE.SpotLight(0xffd0a0,4200,140,0.75,0.7,2);rl.position.set(99,EH-1,40);rl.target.position.set(99,0,40);rl.castShadow=true;scene.add(rl);scene.add(rl.target);
 
@@ -182,12 +182,12 @@ const bk=new THREE.Mesh(new THREE.CylinderGeometry(4,3.4,7,24),bm);bk.position.s
 const gl1=new THREE.Mesh(new THREE.PlaneGeometry(66,EH),mats.glass);gl1.rotation.y=Math.PI/2;gl1.position.set(GX,EH/2,33);scene.add(gl1);
 const gl2=new THREE.Mesh(new THREE.PlaneGeometry(56.5,EH),mats.glass);gl2.rotation.y=Math.PI/2;gl2.position.set(GX,EH/2,97.75);scene.add(gl2);
 // thin black channels & door edges
-box(1.2,.8,R,mats.frame,GX-.6,0,0);box(1.2,.8,R,mats.frame,GX-.6,EH-.8,0);
+box(1.2,.8,R,mats.brass,GX-.6,0,0);box(1.2,.8,R,mats.brass,GX-.6,EH-.8,0);
 // shower door 24" (z 40..64) with transom line at 76
-box(.8,EH,.6,mats.frame,GX-.4,0,40);box(.8,EH,.6,mats.frame,GX-.4,0,64);box(.8,.6,24,mats.frame,GX-.4,76,40);
-box(1.2,24,1.2,mats.black,GX-2.2,30,61);
+box(.8,EH,.6,mats.brass,GX-.4,0,40);box(.8,EH,.6,mats.brass,GX-.4,0,64);box(.8,.6,24,mats.brass,GX-.4,76,40);
+box(1.2,24,1.2,mats.brass,GX-2.2,30,61);
 // sauna door 24" (z 100..124)
-box(.8,EH,.6,mats.frame,GX-.4,0,100);box(.8,EH,.6,mats.frame,GX-.4,0,124);
+box(.8,EH,.6,mats.brass,GX-.4,0,100);box(.8,EH,.6,mats.brass,GX-.4,0,124);
 box(1.5,24,2,bm,GX-2.5,30,102);
 
 // ---------- VANITY on pine wall x 0..21, z 66..114 ----------
